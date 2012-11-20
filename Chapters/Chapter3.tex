@@ -47,7 +47,81 @@
 %=============== Thiết kế ========================
     \section{Thiết kế}
         \subsection{Thiết kế hệ thống}
-            Các hệ thống nhúng 
+            Ở bước này, tổ chức tổng quát của chương trình sẽ được phát triển,
+            bao gồm:
+            \begin{itemize}
+                \item Task: các tác vụ, 
+                \item Comumunications:  sự liên lạc giữa các tác vụ với
+            nhau cũng như giữa hệt thống và thể giới bên ngoài, 
+                \item Timing:  sự phân bố thời gian trên toàn hệ thống, đảm bảo mỗi tác
+                    vụ hoạt động trong đúng khoảng thời gian để hoàn thành chức
+                    năng của nó,
+                \item Priority: độ ưu tiên, để nhường quyền thực hiện cho một số tác vụ
+                    nào đó được coi là quan trọng cho hệ thống vào một thời
+                    điểm bất kỳ.
+            \end{itemize}
+
+            Đây là những yêu cầu cơ bản cho ứng dụng đa tác vụ. 
+
+            Để bắt đầu thiết kế mức hệ thống, người thiết kế cần phải hiểu rõ
+            chương trình cần phải hoàn thành những gì. Hay phải hiểu rõ được
+            các yêu cầu của phần mềm.
+
+            \subsubsection{Xác định các tác vụ}
+                Đây là quá trình hợp các yêu cầu chức năng của phần mềm lại
+                và hợp thành một số ít các tác vụ. Mỗi tác vụ sẽ là một module
+                có thể được thực hiện riêng biệt, có Comumunications, Timing,
+                Priority riêng của nó. Do đó, các chức năng bên trong module
+                phải tương thích với nhau, hay ít nhất là có thể thực hiện hiện
+                mà không ảnh hưởng đến chức năng khác.
+
+                Các chức năng được coi là tương thích với nhau nếu thoả mãn một
+                trong các tiêu chí sau \cite{EmbSysWD}:
+                \begin{itemize}
+                    \item Thực hiện tuần tự,
+                    \item Thực hiện đồng bộ với nhau,
+                    \item Cùng quản lý một thiết bị ngoại vì,
+                    \item Quản lý dữ liệu chung,
+                    \item Loại trừ lẫn nhau trong lúc thực hiện,
+                    \item Đều là sự mở rộng của một chức năng khác.
+                \end{itemize}
+
+                Các chức năng thoả mãn một trong các tiêu chí sau đây thì được
+                gọi là không tương thích với nhau. Không nên cho các chức năng
+                này vào cùng một module.
+                \begin{itemize}
+                    \item Thực hiện không đồng bộ,
+                    \item Thực hiện ở tốc độ (rate) khác nhau,
+                    \item Có mức độ ưu tiên khác nhau
+                \end{itemize}
+
+            \subsubsection{Giao tiếp}
+                Bước tiếp theo của thiết kế hệ thống là xác định các giao tiếp
+                giữa các tác vụ với nhau và với thế giới bên ngoài (thông qua
+                các thiết bị ngoại vi) của hệ thống. Qua bước này, chúng ta có
+                thể:
+                \begin{enumerate}
+                    \item ước lượng được bộ nhớ cần thiết cho hệ thống,
+                    \item Xác định tất cả các biến trong chương trình mà không
+                        thuộc vào một tác vụ cụ thể nào,
+                \end{enumerate}
+
+                Người ta thường sử dụng biểu đồ luồng dữ liệu (DFD) để diễn tác
+                các giao tiếp.
+
+                \begin{figure}[H]
+                    \centering
+                    \includegraphics[scale=0.6]{dfdcom}
+                    \rule{35em}{0.5pt}
+                    \caption{Biểu đồ luồng dữ liệu cho đồng hồ báo thức}
+                    \label{fig:dfdcom}
+                \end{figure}
+
+                Hình \ref{fig:dfdcom} là sơ đồ luồng dữ liệu biểu diễn giao
+                tiếp giữa các tác vụ của một đồng hồ báo thức. Trong đó hình
+                tròn biểu diễn cho một tác vụ, các đường thẳng chỉ ra giao tiếp
+                giữa chúng.
+
 
         \subsection{Thiết kế chương trình}
             \paragraph{Thiết kế hướng đối tượng / hướng thủ tục}
