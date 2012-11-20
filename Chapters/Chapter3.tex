@@ -71,14 +71,24 @@
                 thích hợp cho việc giải quyết các vấn đề của việc thiết kế phần
                 mềm nhúng.
 
-            \paragraph{Mô hình hướng đối tượng thời gian thực}
-                Với những yêu cầu về thời gian thực của phần mềm nhúng, cần có
-                một mô hình khác để biểu diễn vấn đề. Ở đây là mô hình hướng
-                đối tượng thời gian thực (Real-time Object Oriented Modeling -
-                ROOM). ROOM định nghĩa các mô hình đối tượng có thể diễn tả
-                quan hệ giữa các đối tượng, biểu đồ trạng thái (\texttt{state
-                diagram}) chỉ rõ các hành động của đối tượng, và 
+                Người ta đã mở rộng mô hình thiết kế hướng đối tượng thành \texttt{mô
+                hình hướng đối tượng thời gian thực (Realtime Object-Oriented
+                Model - ROOM)} \cite{ROOM}. ROOM hỗ trợ UML-RT, một mở rộng của
+                UML chuẩn dành cho các hệ thống thời gian thực. 
 
+                \begin{figure}[H]
+                    \centering
+                    \includegraphics[scale=0.6]{umlrt}
+                    \rule{35em}{0.5pt}
+                    \caption{UML-RT}
+                    \label{fig:umlrt}
+                \end{figure}
+
+                Hình \ref{fig:umlrt} minh hoạ cho biểu đồ UML-RT. Trong đó A, B
+                là các \texttt{capsule} - đối tượng tích cực. Các capsule đều
+                có các \texttt{port} để kết nối với nhau. Các capsule sẽ truyền
+                thông điệp qua các port này.
+                
 %============ Coding =============================
     \section{Mã hoá chương trình}
         \paragraph{Ngôn ngữ lập trình}
