@@ -1,4 +1,5 @@
 \chapter{Quy trình phát triển phần mềm nhúng}
+    
 
 %================ Requirement ===================
     \section{Xác định yêu cầu người dùng}
@@ -289,6 +290,20 @@
         pháp kiểm thử cho từng hệ thống riêng biệt. Không có một phương pháp
         chung nào cho tất cả các hệ thống nhúng.
 
+        Quá trình kiểm thử phần mềm nhúng cơ bản như hình \ref{fig:embdevprg}.
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[scale=0.6]{embdevprg}
+            \rule{35em}{0.5pt}
+            \caption{Quy trình kiểm thử phần mềm nhúng}
+            \label{fig:embdevprg}
+        \end{figure}
+
+        Như đã nói trước đó, phần mềm nhúng thường phát triển song song cùng
+        lúc với phần cứng. Kiểm thử phần mềm nhúng phải đi đôi với kiểm thử
+        phần cứng.
+
         \subsection{Các giai đoạn kiểm thử}
             \begin{enumerate}
                 \item Kiểm thử module
@@ -298,6 +313,25 @@
             \end{enumerate}
             Như vậy, so với kiểm thử thông thường thì kiểm thử phần mềm nhúng
             có thêm giai đoạn kiểm thử tích hợp phần cứng - phần mềm.
+
+        \subsection{Kiểm thử trên môi trường giả lập}
+            Trước khi chạy trên máy thật, phần mềm nhúng được kiểm thử trên môi
+            trường giả lập chạy trên máy host. Ưu điểm của phương pháp này là
+            cài đặt đơn giản (đơn giản hơn so với việc đưa chương trình lên máy
+            thật), tiết kiệm, có khả năng tùy biến cao.
+
+        \subsection{Kiểm thử trên thiết bị thật}
+            Các môi trường giả lập trên PC không phải lúc nào cũng có thể giả lập được
+            hết các tính năng của thiết bị, VD: tính năng rung trên điện thoại
+            di động, định vị GPS, \ldots. Và cũng không thể hiện được hết tất
+            cả các tình huống có thể gặp phải trong thế giới thật, VD: các sự
+            kiện xảy ra đồng thời. Ngoài ra, hiệu năng của chương trình trên
+            môi trường giả lập cũng không giống với trên thiết bị thật (thường
+            là chậm hơn), do đó không thể đánh giá đúng được hiệu năng thật
+            (vốn là một yếu tố rất quan trọng của phần mềm nhúng).
+
+            Do vậy, cần phải kiểm thử trên thiết bị thật. Chỉ khi nào chương
+            trình chạy đúng trên thiết bị thật thì mới được coi là kiểm thử hoàn thành.
 
         \subsection{Một số vấn đề trong kiểm thử phần mềm nhúng}
             \begin{itemize}
